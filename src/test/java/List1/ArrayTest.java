@@ -86,4 +86,15 @@ public class ArrayTest {
         assertThat(duplicate, contains("a", "a","a", "b", "b", "b","c", "c", "c"));
     }
 
+    @Test
+    public void shouldDuplicateElementsInAList2(){
+        List<String> duplicate = ArrayExec.duplicates2(Arrays.asList("a","b","c"), 3);
+        assertThat(duplicate, contains("a", "a","a", "b", "b", "b","c", "c", "c"));
+    }
+
+    @Test
+    public void shouldDropEveryNthElements() {
+        List<String> result = ArrayExec.dropEveryNth(Arrays.asList("a","b", "c","d","e"),2);
+        assertThat(result,contains("a","c","e"));
+    }
 }

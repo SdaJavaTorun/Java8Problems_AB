@@ -60,12 +60,30 @@ public class ArrayExec {
         //    return list.stream().distinct().collect(Collectors.toList());
     }
 
-   
+    public static <T> List<T> duplicates(List<T> list, int n) {
+
+        List<T> listAfter = new ArrayList<>();
+        int m = 3;
+
+       for(int i = 0; i<=list.size(); i++ )
+           for (int j=0; j<m; j++)
+               listAfter.add(list.get(i));
+        return listAfter;
 
     }
 
+    // sposob z flatmapą. Splaszcza ona strukture. Czyli Sprowadzamy wiele tablic, do jednej.
 
+    public static <T> List<T> duplicates2(final List<T> list, final int times) {
+        return list.stream().flatMap(e -> Collections.nCopies(times, e).stream()).collect(toList());
+    }
 
+    public static <T> List<T> dropEveryNth(List<T> list , int n){
 
+        int[] m = {0};
+
+        List<T> result = list.stream().filter(x -> m[0]++ % n == 0).collect(Collectors.toList());
+        return result;
+    }
 
 }
